@@ -37,5 +37,8 @@ public class RapperService {
 		}
 		return null;
 	}
+	public void deleteRapper (int id) {
+		rapperRepository.deleteById(id);
+	}
 
 }
