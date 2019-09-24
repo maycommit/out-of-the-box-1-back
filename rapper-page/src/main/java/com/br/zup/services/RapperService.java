@@ -22,5 +22,8 @@ public class RapperService {
 	public Rapper rapperId(int id) {
 		return rapperRepository.findById(id).get();
 	}
+	public void createRapper(Rapper newRapper) {
+		rapperRepository.save(newRapper);
+	}
 
 }
