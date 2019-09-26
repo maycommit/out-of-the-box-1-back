@@ -24,61 +24,49 @@ import com.br.zup.services.RapperService;
 public class RapperController {
 	@Autowired
 	private RapperService rapperService;
-	
+
 	@GetMapping
 	public ResponseEntity<?> allRapper() {
 		return ResponseEntity.ok().body(rapperService.allRapper());
 	}
-	
+
 	@GetMapping("/{id}")
 	public ResponseEntity<?> rapperId(@PathVariable int id) {
 		try {
 			Rapper rapper = rapperService.rapperId(id);
 			return ResponseEntity.ok(rapper);
-					
+
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 		}
-		
+
 	}
+
 	@PostMapping("/new")
-	public ResponseEntity<?> createRapper(@Valid @RequestBody Rapper rapper){
+	public ResponseEntity<?> createRapper(@Valid @RequestBody Rapper rapper) {
 		try {
 			rapperService.createRapper(rapper);
 			return ResponseEntity.status(HttpStatus.CREATED).body(rapper);
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 		}
 	}
-		
-		@PutMapping("/update/{id}")
-		public ResponseEntity<?> updateRapper(@PathVariable int id,@RequestBody Rapper newRapper) {
-			try {
-				return ResponseEntity.ok().body(rapperService.updateRapper(id, newRapper));
-				
-			}catch (Exception e) {
-				return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-			}
-		
+
+	@PutMapping("/update/{id}")
+	public ResponseEntity<?> updateRapper(@PathVariable int id, @RequestBody Rapper newRapper) {
+		try {
+			return ResponseEntity.ok().body(rapperService.updateRapper(id, newRapper));
+
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+		}
+
 	}
+
 	@DeleteMapping("/{id}")
-	public ResponseEntity<?> deleteRapper(@PathVariable int id){
+	public ResponseEntity<?> deleteRapper(@PathVariable int id) {
 		rapperService.deleteRapper(id);
 		return ResponseEntity.ok().build();
 	}
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }
