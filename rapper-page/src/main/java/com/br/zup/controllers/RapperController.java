@@ -20,12 +20,12 @@ import com.br.zup.services.RapperService;
 
 @CrossOrigin(origins = "*")
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/rappers")
 public class RapperController {
 	@Autowired
 	private RapperService rapperService;
 	
-	@GetMapping("/all")
+	@GetMapping
 	public ResponseEntity<?> allRapper() {
 		return ResponseEntity.ok().body(rapperService.allRapper());
 	}
