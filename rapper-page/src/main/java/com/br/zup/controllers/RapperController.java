@@ -63,7 +63,7 @@ public class RapperController {
 
 	}
 
-	@DeleteMapping("/{id}")
+	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<?> deleteRapper(@PathVariable int id) {
 		rapperService.deleteRapper(id);
 		return ResponseEntity.ok().build();
